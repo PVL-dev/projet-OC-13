@@ -1,70 +1,69 @@
-# Getting Started with Create React App
+<p align="center">
+  <img src="/src/assets/logo/fullLogo.png" width="520px" alt="Argent Bank logo"/>
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
+[![](https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)](https://code.visualstudio.com/)
+[![](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)](/)
+[![](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://fr.reactjs.org/)
+[![](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)](https://reactrouter.com/)
+[![](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white)](https://sass-lang.com/)
+[![](https://img.shields.io/badge/-AXIOS-61DAFB?style=for-the-badge)](https://axios-http.com/)
+[![](https://img.shields.io/badge/eslint-3A33D1?style=for-the-badge&logo=eslint&logoColor=white)](https://eslint.org/)
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Projet OC13 - Argent Bank
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Argent Bank is a banking application.
 
-### `npm test`
+The user can login and consult his bank accounts and balance.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This app use React, React Router, Redux, and Axios.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Design based for a Desktop version of minimum 1024px x 780px. There is no Tablet/Mobile version yet.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Prerequisites
+### Editor / IDE :
+- [Visual Studio code](https://code.visualstudio.com/)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Others :
+- [nodeJS](https://nodejs.org/fr/)
+- [npm](https://www.npmjs.com/)
+- [Yarn](https://yarnpkg.com/)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Dependencies
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- [React](https://fr.reactjs.org/)
+- [React-dom](https://www.npmjs.com/package/react-dom)
+- [React-router-dom](https://v5.reactrouter.com/web/guides/quick-start)
+- [Redux](https://redux.js.org/)
+- [Axios](https://axios-http.com/)
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Installation
+### Step 1 : Installing and launching back-end
 
-### Code Splitting
+- Clone the Back-End repository : `git clone https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API`
+- Follow instructions in the README of this repo
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+### Step 2 : Installing and launching front-end
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Clone the Front-End repository : `git clone https://github.com/PVL-dev/projet-OC-13`
+- Launch new terminal and install dependencies : `yarn install`
+- Launch Front-End on port 3000 (default port): `yarn dev`
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Use
 
-### Advanced Configuration
+Under construction...
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+Thanks for reading !
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
