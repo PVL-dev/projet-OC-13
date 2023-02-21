@@ -2,15 +2,16 @@
   <img src="/src/assets/logo/fullLogo.png" width="520px" alt="Argent Bank logo"/>
 </p>
 
+  
 
+  
 
 [![](https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)](https://code.visualstudio.com/)
 [![](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)](/)
 [![](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://fr.reactjs.org/)
-[![](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)](https://reactrouter.com/)
 [![](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white)](https://sass-lang.com/)
+[![](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)](https://reactrouter.com/)
 [![](https://img.shields.io/badge/-AXIOS-61DAFB?style=for-the-badge)](https://axios-http.com/)
-[![](https://img.shields.io/badge/eslint-3A33D1?style=for-the-badge&logo=eslint&logoColor=white)](https://eslint.org/)
 
 
 # Projet OC13 - Argent Bank
@@ -22,7 +23,7 @@ The user can login and consult his bank accounts and balance.
 This app use React, React Router, Redux, and Axios.
 
 
-Design based for a Desktop version of minimum 1024px x 780px. There is no Tablet/Mobile version yet.
+Design based for a Desktop version of minimum 350px x 690px.
 
 
 

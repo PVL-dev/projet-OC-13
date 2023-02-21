@@ -1,0 +1,42 @@
+#header {
+    .main-nav {
+        padding: 5px 20px;
+        height: 55px;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        a {
+            font-weight: bold;
+            color: $color-darkgray; 
+        }
+        a.router-link-exact-active {
+            color: $color-green;
+        }
+
+        &-logo {
+            display: flex;
+            align-items: center;
+
+            &-image {
+                max-width: 100%;
+                width: 200px;
+            }
+        }
+
+        &-item {
+            text-decoration: none;
+            margin-right: 0.5rem;
+
+            i {
+                margin-right: 6px;
+            }
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
