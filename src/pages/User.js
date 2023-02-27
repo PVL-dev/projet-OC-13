@@ -1,6 +1,15 @@
-import React from 'react';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { activePage } from '../features/userReducer.js';
 
 const User = () => {
+    const dispatch = useDispatch();
+    
+    useEffect(() => {
+        dispatch(activePage("User"));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
     return (
         <div id="userPage">
             <main className="main bg-dark">

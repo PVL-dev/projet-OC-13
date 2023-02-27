@@ -1,10 +1,10 @@
-#signInPage {
+#loginPage {
     .main {
         min-height: max(545px, calc(100vh - 4.5rem - 75px));
         display: flex;
         justify-content: center;
 
-        .sign-in-content {
+        .login-content {
             margin: auto;
             margin-top: 3rem;
             padding: 2rem;
@@ -13,7 +13,7 @@
             box-sizing: border-box;
             background-color: white;
             
-            .sign-in-icon {
+            .login-icon {
                 font-size: 5rem;
             }
         
@@ -44,7 +44,7 @@
                 }
             }
         
-            .sign-in-button {
+            .login-button {
                 padding: 8px;
                 margin-top: 1rem;
                 width: 100%;

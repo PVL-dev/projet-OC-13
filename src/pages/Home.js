@@ -1,9 +1,19 @@
-import React from 'react';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { activePage } from '../features/userReducer.js';
 import icoChat from '../assets/icon/icon-chat.png';
 import icoMoney from '../assets/icon/icon-money.png';
 import icoSecurity from '../assets/icon/icon-security.png';
 
+
 const Home = () => {
+    const dispatch = useDispatch();
+    
+    useEffect(() => {
+        dispatch(activePage("Home"));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
     return (
         <main id="homePage">
             <div className="hero">
