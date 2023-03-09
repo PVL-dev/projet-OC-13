@@ -8,6 +8,7 @@
             margin: auto;
             margin-top: 3rem;
             padding: 2rem;
+            padding-bottom: 0;
             width: 300px;
 
             box-sizing: border-box;
@@ -47,22 +48,75 @@
             .login-button {
                 padding: 8px;
                 margin-top: 1rem;
+                height: calc(25px + 1rem);
                 width: 100%;
 
-                display: block;
-                
-                font-size: 1.1rem;
-                font-weight: bold;
-                color: $color-white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 
                 cursor: pointer;
                 background-color: $color-lightgreen;
                 transition: all 0.5s ease-out;
 
                 &:hover {
-                    text-decoration: underline;
                     background-color: $color-darkpurple;
                 }
+            }
+            .buttonText {
+                span {
+                    display: none;
+                }
+                p {
+                    margin: 0;
+
+                    font-size: 1.1rem;
+                    font-weight: bold;
+                    color: $color-white;
+                }
+            }
+            .buttonLoader {
+                p {
+                    display: none;
+                }
+                span {
+                    display: block;
+                    width: 21px;
+                    height: 21px;
+                    border-radius: 50%;
+                    position: relative;
+                    animation: rotate 1s linear infinite;
+                    
+                    &::before {
+                        content: "";
+                        box-sizing: border-box;
+                        position: absolute;
+                        inset: 0px;
+                        border-radius: 50%;
+                        border: 5px solid #FFF;
+                        animation: prixClipFix 2s linear infinite ;
+                    }
+                }
+              
+                @keyframes rotate {
+                100%   {transform: rotate(360deg)}
+                }
+              
+                @keyframes prixClipFix {
+                    0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
+                    25%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
+                    50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
+                    75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 100%)}
+                    100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0)}
+                }
+            }
+
+            &__error {
+                height: 3rem;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
         }
     }

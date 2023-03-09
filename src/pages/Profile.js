@@ -1,20 +1,26 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { activePage } from '../features/userReducer.js';
+import { useDispatch, useSelector } from 'react-redux';
+import { activePage } from '../features/reducer/userSlice.js';
+import { 
+	userFirstNameSelector,
+    userLastNameSelector
+} from '../utils/selectors.js';
 
-const User = () => {
+const Profile = () => {
     const dispatch = useDispatch();
-    
+
+    const userFirstName = useSelector(userFirstNameSelector);
+    const userLastName = useSelector(userLastNameSelector);
+
     useEffect(() => {
-        dispatch(activePage("User"));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+        dispatch(activePage("Profile"));
+    }, [dispatch]);
 
     return (
         <div id="userPage">
             <main className="main bg-dark">
                 <div className="sectionHeader">
-                    <h1>Welcome back<br />Tony Jarvis !</h1>
+                    <h1>Welcome back<br />{userFirstName} {userLastName} !</h1>
                     <button className="edit-button">Edit Name</button>
                 </div>
                 <h2 className="sr-only">Accounts</h2>
@@ -56,5 +62,5 @@ const User = () => {
     );
 };
 
-export default User;
+export default Profile;
 

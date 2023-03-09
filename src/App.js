@@ -1,29 +1,53 @@
+import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import store from './utils/store.js';
+import { useDispatch, useSelector } from 'react-redux';
+import RouteProtector from './utils/RouteProtector.js';
 import Header from './components/Header.js';
 import Footer from './components/Footer.js';
 import Home from './pages/Home.js';
 import Login from './pages/Login.js';
-import User from './pages/User.js';
+import Profile from './pages/Profile.js';
+import { 
+	tokenSelector
+} from './utils/selectors.js';
+import { getUserDatas } from './services/UserService.js';
+import { updateUserDatas } from './features/reducer/userSlice.js';
 
 const App = () => {
+	const dispatch = useDispatch();
+	const token = useSelector(tokenSelector);
+
+	useEffect(() => {
+		const initUserDatas = async (token) => {
+			const userDatas = await getUserDatas(token);
+			console.log(userDatas);
+			dispatch(updateUserDatas(userDatas));
+		};
+
+		if (token) {
+			initUserDatas(token);
+		};
+	}, [token, dispatch]);
+
     return (
 		<div id="App">
-			<Provider store={store}>
-				<BrowserRouter>
-					<Header />
-
+			<BrowserRouter>
+				<Header />
+				
+				<main className="main-container">
 					<Routes>
-						<Route path='/' element={<Home />} />
-						<Route path='/index' element={<Home />} />
-						<Route path='/login' element={<Login />} />
-						<Route path='/user' element={<User />} />
+						<Route path="/" element={<Home />} />
+						<Route path="/index" element={<Home />} />
+						<Route path="/login" element={<Login />} />
+						<Route element={<RouteProtector />}>
+							<Route path="/profile" element={<Profile />} />
+						</Route>
+						<Route path="*" element={<Home />}/>
 					</Routes>
+				</main>
 
-					<Footer />
-				</BrowserRouter>
-			</Provider>
+				<Footer />
+			</BrowserRouter>
 		</div>
     );
 }

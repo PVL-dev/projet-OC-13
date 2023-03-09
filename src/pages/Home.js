@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { activePage } from '../features/userReducer.js';
+import { activePage } from '../features/reducer/userSlice.js';
 import icoChat from '../assets/icon/icon-chat.png';
 import icoMoney from '../assets/icon/icon-money.png';
 import icoSecurity from '../assets/icon/icon-security.png';
@@ -11,8 +11,7 @@ const Home = () => {
     
     useEffect(() => {
         dispatch(activePage("Home"));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [dispatch]);
 
     return (
         <main id="homePage">
