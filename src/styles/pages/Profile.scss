@@ -10,22 +10,56 @@
         .sectionHeader {
             padding-top: 2rem;
             padding-bottom: 2rem;
+            height: 150px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         
             color: $color-white;
 
             h1 {
                 margin: 0;
             }
-        
-            .edit-button {
+
+            form {
                 margin-top: 1rem;
-                padding: 10px;
+                width: 420px;
+
+                display: flex;
+                justify-content: space-between;
+
+                .input-wrapper {
+                    width: 200px;
+
+                    display: flex;
+                    flex-direction: column;
+                    text-align: left;
+
+                    input {
+                        padding: 5px;
+                        font-size: 1.1rem;
+                    }
+                }
+            }
+            
+            .buttons-container {
+                width: 220px;
+
+                display: flex;
+                justify-content: space-between;
+            }
+            button {
+                margin-top: 1rem;
+                padding: 8px;
+                height: calc(20px + 1rem);
+                width: 100px;
         
+                font-size: 0.9rem;
                 font-weight: bold;
-                color: #fff;
+                color: $color-white;
         
-                border-color: #00bc77;
-                background-color: #00bc77;
+                background-color: $color-lightgreen;
             }
         }
         

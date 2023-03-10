@@ -1,7 +1,9 @@
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { activePage } from '../features/reducer/userSlice.js';
+import { activePage, updateUserDatas } from '../features/reducer/userSlice.js';
+import { updateUserDatasServer } from '../services/UserService.js';
 import { 
+    tokenSelector,
 	userFirstNameSelector,
     userLastNameSelector
 } from '../utils/selectors.js';
@@ -9,8 +11,62 @@ import {
 const Profile = () => {
     const dispatch = useDispatch();
 
+    const token = useSelector(tokenSelector);
     const userFirstName = useSelector(userFirstNameSelector);
     const userLastName = useSelector(userLastNameSelector);
+
+    const [sectionHeaderOpen, setSectionHeaderOpen] = useState(false);
+
+    const firstNameInput = useRef();
+    const lastNameInput = useRef();
+    const launchUpdate = async () => {
+        const firstName = firstNameInput.current.value;
+        const lastName = lastNameInput.current.value;
+
+        const response = await updateUserDatasServer(token, firstName, lastName);
+        console.log(response.message)
+        dispatch(updateUserDatas({body: {firstName, lastName}}));
+        setSectionHeaderOpen(false);
+    };
+
+    const SectionHeader = () => {
+        if (sectionHeaderOpen === false) {
+            return (
+                <div className="sectionHeader">
+                    <h1>Welcome back<br />{userFirstName} {userLastName} !</h1>
+                    <button className="edit-button" onClick={toggleSectionHeader}>Edit Name</button>
+                </div>
+            );
+        } else {
+            return (
+                <div className="sectionHeader">
+                    <h1>Welcome back</h1>
+                    <form id="updateForm" onSubmit={launchUpdate}>
+                        <div className="input-wrapper">
+                            <input id="FirstName" type="text" ref={firstNameInput} placeholder={userFirstName} required={true}/>
+                        </div>
+
+                        <div className="input-wrapper">
+                            <input id="LastName" type="text" ref={lastNameInput} placeholder={userLastName} required={true}/>
+                        </div>
+                    </form>
+
+                    <div className="buttons-container">
+                        <button className="save-button" type="submit" form="updateForm">Save</button>
+                        <button className="cancel-button" onClick={toggleSectionHeader}>Cancel</button>
+                    </div>
+                </div>
+            );
+        };
+    };
+
+    const toggleSectionHeader = () => {
+        if (sectionHeaderOpen === false) {
+            setSectionHeaderOpen(true);
+        } else {
+            setSectionHeaderOpen(false);
+        };
+    };
 
     useEffect(() => {
         dispatch(activePage("Profile"));
@@ -19,10 +75,7 @@ const Profile = () => {
     return (
         <div id="userPage">
             <main className="main bg-dark">
-                <div className="sectionHeader">
-                    <h1>Welcome back<br />{userFirstName} {userLastName} !</h1>
-                    <button className="edit-button">Edit Name</button>
-                </div>
+                <SectionHeader />
                 <h2 className="sr-only">Accounts</h2>
 
                 <section className="account">
