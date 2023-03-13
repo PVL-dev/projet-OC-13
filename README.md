@@ -64,7 +64,15 @@ Design based for a Desktop version of minimum 350px x 690px.
 
 ## Use
 
-Under construction...
+You can log in using one of the following credentials :
+- Email : `tony@stark.com`
+- Password : `password123`
+
+or
+
+- Email : `steve@rogers.com`
+- Password : `password456`
+
 
 
 Thanks for reading !
