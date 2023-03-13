@@ -59,7 +59,13 @@
                 font-weight: bold;
                 color: $color-white;
         
+                cursor: pointer;
                 background-color: $color-lightgreen;
+                transition: all 0.2s ease-out;
+
+                &:hover {
+                    background-color: $color-gray;
+                }
             }
         }
         
@@ -84,15 +90,23 @@
                 flex: 1;
         
                 .transaction-button {
-                    display: block;
-                    width: 100%;
+                    margin-top: 1rem;
                     padding: 8px;
+                    width: 100%;
+                    
+                    display: block;
+
                     font-size: 1.1rem;
                     font-weight: bold;
-                    margin-top: 1rem;
-                    border-color: #00bc77;
-                    background-color: #00bc77;
-                    color: #fff;
+                    color: $color-white;
+                    
+                    cursor: pointer;
+                    background-color: $color-lightgreen;
+                    transition: all 0.2s ease-out;
+
+                    &:hover {
+                        background-color: $color-gray;
+                    }
                 }
             }
         

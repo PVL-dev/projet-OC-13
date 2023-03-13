@@ -1,0 +1,440 @@
+swagger: '2.0'
+info:
+  title: Bank Argent API documentation
+  description: Contains all available API endpoints in this codebase
+  version: '1.0.0'
+  termsOfService: 'https://swagger.io/terms/'
+host: localhost:3001
+basePath: /api/v1
+schemes:
+  - https
+paths:
+  /user/login:
+    post:
+      tags:
+        - User Module
+      summary: Login
+      description: API for Login
+      parameters:
+        - in: body
+          name: body
+          description: Login Payload
+          required: true
+          schema:
+            $ref: '#/definitions/LoginRequest'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Login Successfully
+          schema:
+            $ref: '#/definitions/LoginResponse'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+  /user/signup:
+    post:
+      tags:
+        - User Module
+      summary: Signup
+      description: API for Signup
+      parameters:
+        - in: body
+          name: body
+          description: Signup Payload
+          required: true
+          schema:
+            $ref: '#/definitions/RegisterRequest'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Signup Successfully
+          schema:
+            $ref: '#/definitions/RegisterResponse'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+  /user/profile:
+    post:
+      security:
+        - Bearer: []
+      tags:
+        - User Module
+      summary: User Profile API
+      description: API for fetching a user profile
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          type: string
+          required: true
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: User profile retrieved successully
+          schema:
+            $ref: '#/definitions/ProfileResponse'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+    put:
+      security:
+        - Bearer: []
+      tags:
+        - User Module
+      summary: User Profile API
+      description: API for updating a user profile
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          type: string
+          required: true
+        - in: body
+          name: body
+          description: Update user profile attributes
+          required: true
+          schema:
+            $ref: '#/definitions/ProfileUpdateRequest'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: User profile retrieved successully
+          schema:
+            $ref: '#/definitions/ProfileUpdateResponse'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+  /user/transactions:
+    get:
+      security:
+        - Bearer: [ ]
+      tags:
+        - User Module
+      summary: User Transactions API
+      description: API for fetching the list of transactions for a specific account
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          type: string
+          required: true
+        - in: query
+          name: userId
+          description: The user's ID
+          required: true
+          type: string
+        - in: query
+          name: accountId
+          description: The account's ID
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Transactions retrieved successully
+          schema:
+            $ref: '#/definitions/TransactionResponse'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+    put:
+      security:
+        - Bearer: [ ]
+      tags:
+        - User Module
+      summary: User Transactions API
+      description: API for updating a specific transaction
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          type: string
+          required: true
+        - in: body
+          name: body
+          description: Update transaction attributes
+          required: true
+          schema:
+            $ref: '#/definitions/TransactionUpdateRequest'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: User's transaction updated successully
+          schema:
+            $ref: '#/definitions/TransactionUpdateResponse'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+definitions:
+  LoginRequest:
+    properties:
+      email:
+        type: string
+        format: email
+        description: User's email
+        example: tony@stark.com
+      password:
+        type: string
+        format: password
+        description: User's password
+        example: password123
+  LoginResponse:
+    type: object
+    properties:
+      status:
+        type: integer
+        description: Response code from the API
+        example: 200
+      message:
+        type: string
+        description: Message from the API
+        example: Login successfully
+      body:
+        type: object
+        properties:
+          token:
+            type: string
+            description: Token generated by the API
+  RegisterRequest:
+    type: object
+    properties:
+      email:
+        type: string
+        format: email
+        description: User's email
+        example: tony@stark.com
+      password:
+        type: string
+        format: password
+        description: User's password
+        example: password123
+      lastName:
+        type: string
+        description: User's first name
+        example: Tony
+      firstName:
+        type: string
+        description: User's last name
+        example: Stark
+  RegisterResponse:
+    type: object
+    properties:
+      status:
+        type: integer
+        description: Response code from the API
+        example: 200
+      message:
+        type: string
+        description: Response message from the API
+        example: User successfully registered
+      id:
+        type: string
+        format: uuid
+        description: New user's UUID
+        example: 620cc0003724e10c821cfb56
+  ProfileResponse:
+    type: object
+    properties:
+      status:
+        type: integer
+        description: Response status code from the API
+        example: 200
+      message:
+        type: string
+        description: Response message from the API
+        example: User profile retrieved successully
+      body:
+        type: object
+        properties:
+          id:
+            type: string
+            format: uuid
+            description: User's UUID
+            example: 620cc0003724e10c821cfb56
+          email:
+            type: string
+            format: email
+            description: User's email
+            example: tony@stark.com
+          firstName:
+            type: string
+            description: User's first name
+            example: Tony
+          lastName:
+            type: string
+            description: User's last name
+            example: Stark
+          accounts:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: string
+                  format: uuid
+                  description: Account UUID
+                  example: 620cdcfd11fbc30d0747af9d
+                title:
+                  type: string
+                  description: Account title
+                  example: Argent Bank Checking
+                balance:
+                  type: integer
+                  description: Amount of account in cents
+                  example: 208279
+                accountType:
+                  type: string
+                  description: Type of the account
+                  example: Checking Account
+  ProfileUpdateRequest:
+    type: object
+    properties:
+      firstName:
+        type: string
+        description: User's first name
+        example: Tony
+      lastName:
+        type: string
+        description: User's last name
+        example: Stark
+  ProfileUpdateResponse:
+    type: object
+    properties:
+      status:
+        type: integer
+        description: Response code from the API
+        example: 200
+      message:
+        type: string
+        description: Response message from the API
+        example: User's profile successfully updated
+      body:
+        type: object
+        properties:
+          id:
+            type: string
+            format: uuid
+            description: User's UUID
+            example: 620cc0003724e10c821cfb56
+          email:
+            type: string
+            format: email
+            description: User's email
+            example: tony@stark.com
+          firstName:
+            type: string
+            example: Tony
+            description: User's first name
+          lastName:
+            type: string
+            example: Stark
+            description: User's last name
+  TransactionResponse:
+    type: object
+    properties:
+      status:
+        type: integer
+        example: 200
+      message:
+        type: string
+        example: Transactions successfully retrieved
+      transactions:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              description: This transaction's UUID
+              example: 620cc0003724e10c821cfb55
+            date:
+              type: string
+              format: date-time
+              description: Transaction date and time
+              example: 2022-02-16T09:12:32.766+00:00
+            description:
+              type: string
+              description: Transaction description
+              example: Total Energy Station
+            amount:
+              type: integer
+              description: Amount of transaction in cents
+              example: 120
+            balance:
+              type: integer
+              description: Amount of account in cents
+              example: 196279
+            type:
+              type: string
+              description: The method used by the user in order to pay (electronic, cash, etc...)
+              example: Electronic
+            category:
+              type: string
+              description: The category of this transaction (Food | Personal | etc...)
+              example: Personal
+            notes:
+              type: string
+              description: Note added by user. Empty by default.
+              example: Gasoline
+  TransactionUpdateRequest:
+    type: object
+    properties:
+      id:
+        type: string
+        format: uuid
+        description: The UUID of the transaction that need to be updated
+        example: 620cc0005784e10c821cfb33
+      category:
+        type: string
+        description: The new category of this transaction
+        example: Food
+      notes:
+        type: string
+        description: Note added by the user
+        example: McDonald's
+  TransactionUpdateResponse:
+    type: object
+    properties:
+      status:
+        type: integer
+        description: Response status code from the API
+        example: 200
+      message:
+        type: string
+        description: Response message from the API
+        example: Transaction successfully updated
+      transaction:
+        type: object
+        properties:
+          id:
+            type: string
+            format: uuid
+            description: The UUID of the transaction that need to be updated
+            example: 620cc0005784e10c821cfb33
+          category:
+            type: string
+            description: The new category of this transaction
+            example: Food
+          notes:
+            type: string
+            description: Note added by the user
+            example: McDonald's
+

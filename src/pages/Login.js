@@ -54,8 +54,6 @@ const Login = () => {
                 <section className="login-content">
                     <i className="fa fa-user-circle login-icon"></i>
                     <h1>Sign In</h1>
-                    <p>tony@stark.com</p>
-                    <p>password123</p>
                     <form onSubmit={submit}>
                         <div className="input-wrapper">
                             <label htmlFor="username">
